@@ -1,0 +1,4 @@
+{
+  "up": "aws route53 change-resource-record-sets --hosted-zone-id YOURIDHERE --change-batch file://snippets/create-dns.json",
+  "down": "aws route53 change-resource-record-sets --hosted-zone-id YOURIDHERE --change-batch file://snippets/delete-dns.json"
+}

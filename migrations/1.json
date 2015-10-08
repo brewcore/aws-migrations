@@ -1,0 +1,4 @@
+{
+  "up": "aws ec2 create-security-group --group-name 'ssh' --description 'Managed by Migrations'",
+  "down": "aws ec2 delete-security-group --group-name 'ssh'"
+}

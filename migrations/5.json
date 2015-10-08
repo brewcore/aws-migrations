@@ -1,0 +1,4 @@
+{
+  "up": "aws ec2 run-instances --image-id ami-77521e12 --security-groups ssh all-out --instance-type t2.micro --count 1",
+  "down": "aws ec2 terminate-instances --instance-ids {{migration5.Instances.0.InstanceId}}"
+}

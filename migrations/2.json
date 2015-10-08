@@ -1,0 +1,4 @@
+{
+  "up": "aws ec2 authorize-security-group-ingress --group-id {{migration1.GroupId}} --protocol tcp --port 22 --cidr 0.0.0.0/0",
+  "down": null
+}

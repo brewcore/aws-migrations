@@ -1,0 +1,14 @@
+{
+  "Comment": "Added DNS entry",
+  "Changes": [{
+    "Action": "CREATE",
+    "ResourceRecordSet": {
+      "Name": "www.example.org.",
+      "Type": "CNAME",
+      "TTL": 300,
+      "ResourceRecords": [{
+        "Value": "ec2-127-0-0-1.compute-1.amazonaws.com"
+      }]
+    }
+  }]
+}

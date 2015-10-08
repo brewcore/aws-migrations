@@ -1,0 +1,4 @@
+{
+  "up": "aws ec2 revoke-security-group-egress --group-id {{migration1.GroupId}} --protocol all --cidr 0.0.0.0/0",
+  "down": null
+}

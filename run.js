@@ -1,4 +1,3 @@
-//var PropertiesReader = require('properties-reader');
 var fs = require('fs');
 var shell = require('shelljs');
 var Mustache = require('mustache');
@@ -11,22 +10,19 @@ if (undefined === process.argv[2] || ('up' !== process.argv[2] && 'down' !== pro
   process.exit(1);
 }
 
-//var count = fs.readdirSync('migrations').length;
-var count = 5;
-var data = {};
+var count = fs.readdirSync('migrations').length,
+  data = {};
 
 loadData(count);
 
 if ('up' === process.argv[2]) {
   for (var i = state.migration + 1; i <= count; i++) {
-    console.log('migrate'+i);
     migrateUp(i, data);
     state.migration = i;
     jsonfile.writeFileSync('state.json', state);
   }
 } else if ('down' === process.argv[2]) {
   for (var i = state.migration; i > 0; i--) {
-    console.log('migrate'+i);
     migrateDown(i);
     state.migration = i-1;
     jsonfile.writeFileSync('state.json', state);
@@ -66,21 +62,3 @@ function migrateDown(counter) {
 function readFile(file) {
   return JSON.parse(fs.readFileSync(file, 'utf8'));
 }
-
-/*function runMigration(migration, previousOutput) {
-  if ('up' === process.argv[2]) {
-    var command;
-    if (previousOutput) {
-      command = Mustache.render(migration.up, JSON.parse(previousOutput));
-      console.log(command);
-    } else {
-      command = migration.up;
-    }
-    return shell.exec(command).output;
-  } else if ('down' === process.argv[2]) {
-    if (migration.down){
-      shell.exec(migration.down);
-    }
-    return null;
-  }
-}*/
